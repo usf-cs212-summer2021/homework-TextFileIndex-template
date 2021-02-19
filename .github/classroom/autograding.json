@@ -38,7 +38,7 @@
       "output": "",
       "comparison": "included",
       "timeout": 3,
-      "points": 20
+      "points": 15
     },
     {
       "name": "Running Group B Tests",
@@ -58,7 +58,7 @@
       "output": "",
       "comparison": "included",
       "timeout": 3,
-      "points": 20
+      "points": 25
     },
     {
       "name": "Running Group D Tests",
@@ -68,17 +68,7 @@
       "output": "",
       "comparison": "included",
       "timeout": 3,
-      "points": 20
-    },
-    {
-      "name": "Running Group E Tests",
-      "setup": "",
-      "run": "bash run_test.sh E",
-      "input": "",
-      "output": "",
-      "comparison": "included",
-      "timeout": 3,
-      "points": 10
+      "points": 30
     }
   ]
 }
