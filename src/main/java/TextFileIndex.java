@@ -6,7 +6,7 @@ import java.nio.file.Path;
  *
  * @author CS 212 Software Development
  * @author University of San Francisco
- * @version Fall 2020
+ * @version Summer 2021
  */
 public class TextFileIndex /* TODO Implement the SimpleIndex interface for Path locations */ {
 

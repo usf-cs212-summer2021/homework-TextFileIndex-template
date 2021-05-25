@@ -19,7 +19,7 @@ import org.junit.jupiter.api.TestMethodOrder;
  *
  * @author CS 212 Software Development
  * @author University of San Francisco
- * @version Spring 2021
+ * @version Summer 2021
  */
 @TestMethodOrder(MethodName.class)
 public class TextFileIndexTest {
@@ -39,7 +39,6 @@ public class TextFileIndexTest {
 	@Nested
 	@TestMethodOrder(OrderAnnotation.class)
 	public class A_StringTests {
-
 		/**
 		 * Tests the toString() implementation.
 		 */
@@ -74,20 +73,6 @@ public class TextFileIndexTest {
 	@Nested
 	@TestMethodOrder(OrderAnnotation.class)
 	public class B_EmptyIndexTests {
-
-		/** Path to use for testing. */
-		private Path location;
-
-		/**
-		 * Creates an empty index before each test.
-		 */
-		@BeforeEach
-		public void createEmpty() {
-			TextFileIndex textFileIndex = new TextFileIndex();
-			index = textFileIndex;
-			location = Path.of("empty.txt");
-		}
-
 		/**
 		 * Tests that there are no locations.
 		 */
@@ -141,6 +126,19 @@ public class TextFileIndexTest {
 		public void testGetWords() {
 			Assertions.assertTrue(index.get(location).isEmpty(), index.toString());
 		}
+		
+		/** Path to use for testing. */
+		private Path location;
+
+		/**
+		 * Creates an empty index before each test.
+		 */
+		@BeforeEach
+		public void createEmpty() {
+			TextFileIndex textFileIndex = new TextFileIndex();
+			index = textFileIndex;
+			location = Path.of("empty.txt");
+		}
 	}
 
 	/**
@@ -149,21 +147,6 @@ public class TextFileIndexTest {
 	@Nested
 	@TestMethodOrder(OrderAnnotation.class)
 	public class C_SingleAddTests {
-
-		/** Path to use for testing. */
-		private Path location;
-
-		/**
-		 * Creates an index with a single location and word before each test.
-		 */
-		@BeforeEach
-		public void createEmpty() {
-			TextFileIndex textFileIndex = new TextFileIndex();
-			index = textFileIndex;
-			location = Path.of("hello.txt");
-			index.add(location, "hello");
-		}
-
 		/**
 		 * Test number of locations.
 		 */
@@ -330,6 +313,20 @@ public class TextFileIndexTest {
 
 			Assertions.assertTrue(index.contains(location, "hello"));
 		}
+		
+		/** Path to use for testing. */
+		private Path location;
+
+		/**
+		 * Creates an index with a single location and word before each test.
+		 */
+		@BeforeEach
+		public void createEmpty() {
+			TextFileIndex textFileIndex = new TextFileIndex();
+			index = textFileIndex;
+			location = Path.of("hello.txt");
+			index.add(location, "hello");
+		}
 	}
 
 	/**
@@ -338,21 +335,6 @@ public class TextFileIndexTest {
 	@Nested
 	@TestMethodOrder(OrderAnnotation.class)
 	public class D_RealIndexTests {
-
-		/**
-		 * Creates an index with a single location and word before each test.
-		 * 
-		 * @throws IOException if an I/O error occurs
-		 */
-		@BeforeEach
-		public void createEmpty() throws IOException {
-			TextFileIndex textFileIndex = new TextFileIndex();
-			index = textFileIndex;
-
-			index.add(animals, getWords(animals));
-			index.add(sentences, getWords(sentences));
-		}
-
 		/**
 		 * Testing whether index was created properly.
 		 */
@@ -409,6 +391,20 @@ public class TextFileIndexTest {
 					"narwhal", "platypus", "echidna", "tarsier");
 
 			Assertions.assertTrue(index.get(animals).containsAll(expected), index.toString());
+		}
+		
+		/**
+		 * Creates an index with a single location and word before each test.
+		 * 
+		 * @throws IOException if an I/O error occurs
+		 */
+		@BeforeEach
+		public void createEmpty() throws IOException {
+			TextFileIndex textFileIndex = new TextFileIndex();
+			index = textFileIndex;
+
+			index.add(animals, getWords(animals));
+			index.add(sentences, getWords(sentences));
 		}
 	}
 
